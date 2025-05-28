@@ -4,22 +4,19 @@ import { Movimiento } from "./Movimiento";
 @Entity("cuentas")
 export class Cuenta{
     @PrimaryColumn()
-    numeroCuenta: string;
+    numeroCuenta: number;
     @Column()
     saldo: number;
     @Column()
-    titular: string;
-    @Column()
-    tipo: string;
+    tipoCuenta: string;
 
     @OneToMany(() => Movimiento, movimiento => movimiento.idCuenta)
     movimientos: Movimiento[];
 
 
-    constructor(numeroCuenta: string, saldo: number, titular: string, tipo: string) {
+    constructor(numeroCuenta?: number, saldo?: number, tipoCuenta?: string) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
-        this.titular = titular;
-        this.tipo = tipo;
+        this.tipoCuenta = tipoCuenta;
     }
 }
