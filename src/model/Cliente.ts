@@ -1,9 +1,11 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToMany } from "typeorm";
+import { Cuenta } from "./Cuenta";
+
 
 @Entity("clientes")
 export class Cliente {
 @PrimaryColumn()
-    dni: string;
+    dni: number;
 
     @Column()
     nombre: string;
@@ -13,8 +15,10 @@ export class Cliente {
 
     @Column()
     telefono: string;
-
-    constructor(dni:string, nombre: string, direccion: string, telefono: string) {
+    //A través de la propiedad cuenta, obtienes los clientes con los que se relaciona la entidad Cuenta
+    @ManyToMany(() => Cuenta, cuenta => cuenta.clientes)
+    cuentas: Cuenta[];
+    constructor(dni:number, nombre: string, direccion: string, telefono: string) {
         this.dni = dni;
         this.nombre = nombre;
         this.direccion = direccion;

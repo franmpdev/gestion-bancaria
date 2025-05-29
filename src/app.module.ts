@@ -6,6 +6,8 @@ import { Cuenta } from './model/Cuenta';
 import { Movimiento } from './model/Movimiento';
 import { Cliente } from './model/Cliente';
 import { Titular } from './model/Titular';
+import { ClientesController } from './controller/clientes.controller';
+import { ClientesService } from './service/clientes.service';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { Titular } from './model/Titular';
     TypeOrmModule.forFeature([Cuenta, Movimiento, Cliente, Titular]),
     
   ],
-  controllers: [CuentasController, CuentasController],
-  providers: [CuentasService, CuentasService],
+  controllers: [CuentasController, CuentasController, ClientesController],
+  providers: [CuentasService, CuentasService, ClientesService],
 })
 export class AppModule {}
