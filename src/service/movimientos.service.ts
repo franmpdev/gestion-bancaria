@@ -42,6 +42,6 @@ export class MovimientosService {
         fecha:Between(fecha1,fecha2)
     },
     relations:["cuenta"]
-    });
+    })
  }
 }
